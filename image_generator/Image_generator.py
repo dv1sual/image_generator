@@ -29,9 +29,9 @@ def generate_test_pattern(img_width, img_height, colors):
 root = tk.Tk()
 root.withdraw()
 
-width = simpledialog.askinteger("Image Generator", "Enter the width of the image:", parent=root, minvalue=1)
-height = simpledialog.askinteger("Image Generator", "Enter the height of the image:", parent=root, minvalue=1)
-num_images = simpledialog.askinteger("Image Generator", "Enter the number of images to generate:", parent=root,
+width = simpledialog.askinteger("Image Generator", "Enter Width:", parent=root, minvalue=1)
+height = simpledialog.askinteger("Image Generator", "Enter Height:", parent=root, minvalue=1)
+num_images = simpledialog.askinteger("Image Generator", "Enter Number:", parent=root,
                                      minvalue=1)
 
 color_options = [(255, 255, 255), (255, 255, 0), (0, 255, 255), (0, 255, 0), (255, 0, 255), (255, 0, 0), (0, 0, 255),
