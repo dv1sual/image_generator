@@ -8,8 +8,14 @@ def generate_test_pattern(img_width, img_height, colors):
     pattern = Image.new("RGB", (img_width, img_height), color=(0, 0, 0))
     draw = ImageDraw.Draw(pattern)
     bar_width = int(img_width / 8)
+    previous_colors = []
     for j in range(8):
         color = random.choice(colors)
+        while color in previous_colors:
+            color = random.choice(colors)
+        previous_colors.append(color)
+        if len(previous_colors) > 2:
+            previous_colors.pop(0)
         left = j * bar_width
         upper = 0
         right = (j + 1) * bar_width
