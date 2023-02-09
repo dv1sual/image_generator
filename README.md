@@ -1,6 +1,11 @@
 # image_generator
 
-# This script generates a series of simple test patterns, each with seven bars of random colors and a black border. The user can specify the dimensions and number of images to generate through dialogs.
+___________________________________________________________________________________________________________________________________________________________
+
+
+This script generates a series of simple test patterns, each with seven bars of random colors and a black border. The user can specify the dimensions and number of images to generate through dialogs.
+
+___________________________________________________________________________________________________________________________________________________________
 
 
 This is a Python script using the Tkinter and PIL (Pillow) libraries to generate a series of test patterns as PNG images.
@@ -24,3 +29,6 @@ The script then uses the simpledialog.askinteger method to prompt the user for t
 The script then calls the generate_test_pattern function repeatedly to generate the desired number of test patterns. Each pattern is saved to disk as a PNG file with a unique name, using the save method.
 
 Finally, the script destroys the Tkinter Tk object to clean up.
+
+___________________________________________________________________________________________________________________________________________________________
+
