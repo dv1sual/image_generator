@@ -5,22 +5,24 @@ import random
 
 
 def generate_test_pattern(img_width, img_height, colors):
-    pattern = Image.new("RGB", (img_width, img_height), color=(0, 0, 0))
+    pattern = Image.new("RGB", (img_width, img_height), color=(255, 255, 255))
     draw = ImageDraw.Draw(pattern)
-    bar_width = int(img_width / 8)
+    bar_width = int(img_width / 7)
     previous_colors = []
-    for j in range(8):
+    for j in range(7):
         color = random.choice(colors)
         while color in previous_colors:
             color = random.choice(colors)
         previous_colors.append(color)
-        if len(previous_colors) > 2:
-            previous_colors.pop(0)
         left = j * bar_width
         upper = 0
         right = (j + 1) * bar_width
         lower = img_height
         draw.rectangle((left, upper, right, lower), fill=color)
+    draw.line((0, 0, img_width, 0), fill=(0, 0, 0), width=4)
+    draw.line((0, 0, 0, img_height), fill=(0, 0, 0), width=4)
+    draw.line((0, img_height, img_width, img_height), fill=(0, 0, 0), width=4)
+    draw.line((img_width, 0, img_width, img_height), fill=(0, 0, 0), width=4)
     return pattern
 
 
