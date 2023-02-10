@@ -1,11 +1,6 @@
-try:
-    import tkinter as tk
-    from tkinter import simpledialog
-    from PIL import Image, ImageDraw
-except ModuleNotFoundError:
-    print("Error: Required libraries (tkinter, PIL) are not installed.")
-    exit(1)
-
+import tkinter as tk
+from tkinter import simpledialog, filedialog
+from PIL import Image, ImageDraw
 import random
 
 
@@ -34,6 +29,13 @@ def generate_test_pattern(img_width, img_height, colors):
 root = tk.Tk()
 root.withdraw()
 
+try:
+    from PIL import Image, ImageDraw
+except ImportError:
+    tk.messagebox.showerror("Error", "The Python Imaging Library (PIL) is not installed.")
+    root.destroy()
+    exit()
+
 width = simpledialog.askinteger("Image Generator", "Enter Width:", parent=root, minvalue=1)
 height = simpledialog.askinteger("Image Generator", "Enter Height:", parent=root, minvalue=1)
 num_images = simpledialog.askinteger("Image Generator", "Enter Number:", parent=root,
@@ -42,8 +44,10 @@ num_images = simpledialog.askinteger("Image Generator", "Enter Number:", parent=
 color_options = [(255, 255, 255), (255, 255, 0), (0, 255, 255), (0, 255, 0), (255, 0, 255), (255, 0, 0), (0, 0, 255),
                  (0, 0, 0)]
 
+directory = filedialog.askdirectory(parent=root, title="Please select a folder to save the images")
+
 for i in range(num_images):
     image = generate_test_pattern(width, height, color_options)
-    image.save("img_{}.png".format(i))
+    image.save(f"{directory}/img_{i}.png")
 
 root.destroy()
