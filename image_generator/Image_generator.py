@@ -1,6 +1,11 @@
-import tkinter as tk
-from tkinter import simpledialog
-from PIL import Image, ImageDraw
+try:
+    import tkinter as tk
+    from tkinter import simpledialog
+    from PIL import Image, ImageDraw
+except ModuleNotFoundError:
+    print("Error: Required libraries (tkinter, PIL) are not installed.")
+    exit(1)
+
 import random
 
 
